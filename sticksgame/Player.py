@@ -10,8 +10,9 @@ class Player:
             # create logger function
             def logger(**kwargs):
                 d = dict(kwargs)
-                d['player'] = self.player_i
-                d['timestamp'] = now()
+                d['player']       = self.player_i
+                d['player_class'] = self.__class__.__name__
+                d['timestamp']    = now()
                 log.append(d)
 
             self.log = logger
