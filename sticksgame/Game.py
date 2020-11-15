@@ -21,7 +21,8 @@ class Game:
     molds = None
     log = None
 
-    def __init__(self, *args):
+
+    def __init__(self, log_db = None, *args):
         """
         Create a Game
 
@@ -42,16 +43,20 @@ class Game:
             self.players_class.append(p.__class__.__name__)
             self.players.append(p)
 
+
     def play(self):
         """
-        start game loop execution
-        :return:
+        Start game loop execution
+        :return: None
         """
         player_result = ""
         i = 0
         while player_result != "won":
-            player_result = self.players[i % len(self.players)].players_turn(self.molds)
-            i = i + 1
+            tries = 0
+            if player_result == "" or player_result == "again" or tries == 0:
+              player_result = self.players[i % len(self.players)].players_turn(self.molds)
+              i = i + 1
+
 
     def stats(self)->dict:
         d = dict()
