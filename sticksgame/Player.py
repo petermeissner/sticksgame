@@ -56,6 +56,12 @@ class Player:
             counter = counter + 1
             dice_roll_res     = dice_roll()
             mold_occupation   = molds.occupied
+            mold_1 = mold_occupation[0]
+            mold_2 = mold_occupation[1]
+            mold_3 = mold_occupation[2]
+            mold_4 = mold_occupation[3]
+            mold_5 = mold_occupation[4]
+            mold_6 = False
             sticks_before = self.sticks
             sticks_from_molds = molds.apply_dice_throw(dice_roll_res)
 
@@ -63,7 +69,9 @@ class Player:
             if sticks_from_molds != 0:
                 # take sticks from molds and give turn to next player
                 self.sticks = self.sticks + sticks_from_molds
-                self.log(dice_n=counter, dice_val = dice_roll_res, mold_occupation=mold_occupation,
+                self.log(dice_n=counter, dice_val = dice_roll_res, 
+                         mold_1=mold_1, mold_2=mold_2, mold_3=mold_3, 
+                         mold_4=mold_4, mold_5=mold_5, mold_6=mold_6, 
                          sticks_before=sticks_before, sticks_after=self.sticks,
                          result = "out")
                 return "out"
@@ -74,18 +82,24 @@ class Player:
 
                 # winner?
                 if (self.sticks == 0):
-                    self.log(dice_n=counter, dice_val = dice_roll_res,mold_occupation=mold_occupation,
-                             sticks_before=sticks_before, sticks_after=self.sticks,
+                    self.log(dice_n=counter, dice_val = dice_roll_res, 
+                         mold_1=mold_1, mold_2=mold_2, mold_3=mold_3, 
+                         mold_4=mold_4, mold_5=mold_5, mold_6=mold_6, 
+                         sticks_before=sticks_before, sticks_after=self.sticks,
                              result="won")
                     return "won"
 
                 # go on or give turn to next player?
                 if self.players_strategy(molds):
-                    self.log(dice_n=counter, dice_val = dice_roll_res,mold_occupation=mold_occupation,
-                             sticks_before=sticks_before, sticks_after=self.sticks,
+                    self.log(dice_n=counter, dice_val = dice_roll_res, 
+                         mold_1=mold_1, mold_2=mold_2, mold_3=mold_3, 
+                         mold_4=mold_4, mold_5=mold_5, mold_6=mold_6, 
+                         sticks_before=sticks_before, sticks_after=self.sticks,
                              result="next player")
                     return "next player"
                 else:
-                    self.log(dice_n=counter, dice_val = dice_roll_res,mold_occupation=mold_occupation,
-                             sticks_before=sticks_before, sticks_after=self.sticks,
+                    self.log(dice_n=counter, dice_val = dice_roll_res, 
+                         mold_1=mold_1, mold_2=mold_2, mold_3=mold_3, 
+                         mold_4=mold_4, mold_5=mold_5, mold_6=mold_6, 
+                         sticks_before=sticks_before, sticks_after=self.sticks,
                              result="again")
