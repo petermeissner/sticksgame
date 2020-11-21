@@ -44,7 +44,7 @@ class Player:
         choice = random.choices(population=(True, False), weights=(0.5, 0.5))[0]
         return choice
 
-    def players_turn(self, molds: Molds) -> str:
+    def players_turn(self, molds: Molds, stats: dict) -> str:
         """
 
         """
@@ -69,11 +69,21 @@ class Player:
             if sticks_from_molds != 0:
                 # take sticks from molds and give turn to next player
                 self.sticks = self.sticks + sticks_from_molds
-                self.log(dice_n=counter, dice_val = dice_roll_res, 
-                         mold_1=mold_1, mold_2=mold_2, mold_3=mold_3, 
-                         mold_4=mold_4, mold_5=mold_5, mold_6=mold_6, 
-                         sticks_before=sticks_before, sticks_after=self.sticks,
-                         result = "out")
+                self.log(
+                  dice_n        = counter, 
+                  dice_val      = dice_roll_res, 
+                  mold_1        = mold_1, 
+                  mold_2        = mold_2, 
+                  mold_3        = mold_3, 
+                  mold_4        = mold_4, 
+                  mold_5        = mold_5, 
+                  mold_6        = mold_6, 
+                  sticks_before = sticks_before, 
+                  sticks_after  = self.sticks,
+                  result        = "out"
+                )
+
+                # next player
                 return "out"
 
             else:
@@ -82,24 +92,51 @@ class Player:
 
                 # winner?
                 if (self.sticks == 0):
-                    self.log(dice_n=counter, dice_val = dice_roll_res, 
-                         mold_1=mold_1, mold_2=mold_2, mold_3=mold_3, 
-                         mold_4=mold_4, mold_5=mold_5, mold_6=mold_6, 
-                         sticks_before=sticks_before, sticks_after=self.sticks,
-                             result="won")
+                    self.log(
+                      dice_n        = counter, 
+                      dice_val      = dice_roll_res, 
+                      mold_1        = mold_1, 
+                      mold_2        = mold_2, 
+                      mold_3        = mold_3, 
+                      mold_4        = mold_4, 
+                      mold_5        = mold_5, 
+                      mold_6        = mold_6, 
+                      sticks_before = sticks_before, 
+                      sticks_after  = self.sticks,
+                      result="won"
+                    )
+
+                    # end game
                     return "won"
 
                 # go on or give turn to next player?
                 if self.players_strategy(molds):
-                    self.log(dice_n=counter, dice_val = dice_roll_res, 
-                         mold_1=mold_1, mold_2=mold_2, mold_3=mold_3, 
-                         mold_4=mold_4, mold_5=mold_5, mold_6=mold_6, 
-                         sticks_before=sticks_before, sticks_after=self.sticks,
-                             result="next player")
+                    self.log(
+                      dice_n        = counter, 
+                      dice_val      = dice_roll_res, 
+                      mold_1        = mold_1, 
+                      mold_2        = mold_2, 
+                      mold_3        = mold_3, 
+                      mold_4        = mold_4, 
+                      mold_5        = mold_5, 
+                      mold_6        = mold_6, 
+                      sticks_before = sticks_before, 
+                      result="next player"
+                    )
+
+                    # return and exit
                     return "next player"
+
                 else:
-                    self.log(dice_n=counter, dice_val = dice_roll_res, 
-                         mold_1=mold_1, mold_2=mold_2, mold_3=mold_3, 
-                         mold_4=mold_4, mold_5=mold_5, mold_6=mold_6, 
-                         sticks_before=sticks_before, sticks_after=self.sticks,
-                             result="again")
+                    self.log(
+                      dice_n        = counter, 
+                      dice_val      = dice_roll_res, 
+                      mold_1        = mold_1, 
+                      mold_2        = mold_2, 
+                      mold_3        = mold_3, 
+                      mold_4        = mold_4, 
+                      mold_5        = mold_5, 
+                      mold_6        = mold_6, 
+                      sticks_before = sticks_before, 
+                      result="again"
+                    )

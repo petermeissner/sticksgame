@@ -67,7 +67,7 @@ class Game:
             
             # let player play and choose her actions            
             while player_result == "start" or player_result == "again":
-                player_result  = current_player.players_turn(self.molds)
+                player_result  = current_player.players_turn(molds = self.molds, stats = self.stats())
                 
 
 
