@@ -1,4 +1,5 @@
 {
   "python.formatting.provider": "black",
-  "jupyter.jupyterServerType": "local"
+  "jupyter.jupyterServerType": "local",
+  "jupyter.alwaysScrollOnNewCell": true
 }

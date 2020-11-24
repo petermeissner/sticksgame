@@ -1,6 +1,6 @@
 # Imports
 
-import pprint
+import time
 import pandas as pd
 
 from sticksgame import Game, Player, write_to_db
@@ -16,6 +16,7 @@ pd.set_option('display.max_columns', None)
 if __name__ == '__main__':
 
   for i in range(100):
+    
     game = Game(Player, Player, Player)
     game.play()
     
@@ -43,8 +44,8 @@ if __name__ == '__main__':
       pd.DataFrame(
         {
           'game_id':             stats['game_id'], 
-          'dice_throws':         stats['player_class'], 
-          'mean_stick_distance': stats['player_id'],
+          'player_class':         stats['player_class'], 
+          'player_id':           stats['player_id'],
           'player_points':       stats['player_points']
         }
         ), 

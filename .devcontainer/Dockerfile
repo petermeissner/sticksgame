@@ -14,11 +14,7 @@ RUN if [ "${INSTALL_NODE}" = "true" ]; then su vscode -c "source /usr/local/shar
 # RUN pip3 --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/requirements.txt \
 #    && rm -rf /tmp/pip-tmp
 
-RUN pip3 --disable-pip-version-check --no-cache-dir install ipykernel
-RUN pip3 --disable-pip-version-check --no-cache-dir install pandas
-RUN pip3 --disable-pip-version-check --no-cache-dir install sqlalchemy 
-RUN pip3 --disable-pip-version-check --no-cache-dir install tenacity 
-RUN pip3 --disable-pip-version-check --no-cache-dir install matplotlib
+# RUN pip3 --disable-pip-version-check --no-cache-dir install ipykernel
 
 RUN pip3 --disable-pip-version-check --no-cache-dir install \
 altair==4.1.0 \

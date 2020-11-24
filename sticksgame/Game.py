@@ -33,7 +33,7 @@ class Game:
         """
 
         # set up game id
-        self.game_id = now()[0:19].replace("-", "").replace(":", "")
+        self.game_id = now()[0:23].replace("T", " ")
 
         # set up log
         self.log     = Log(game_id = self.game_id)
